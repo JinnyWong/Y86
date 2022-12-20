@@ -41,7 +41,7 @@ void read_yo_file() {
 }
 
 
-int main() {\
+int main() {
     read_yo_file();
     for (int i = 0; i < 100; i++) {
         std::cout << MEM[i] << " ";
