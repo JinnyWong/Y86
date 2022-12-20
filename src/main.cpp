@@ -1,53 +1,49 @@
-#include<iostream>
-#include<fstream>
-#include<string>
+#include <algorithm>
+#include <iostream>
+#include <string>
 
-#include "instruction.cpp"
-#include "register.h"
-#include "output.h"
-	
-int main(){
-	//read the Y86 program from a file
-	ifstream program_file("program.txt");
-	string line;
-	
-	
-	//parse and execute the Y86 instructions
-	while(getline(program_file,line)){
-		//decode instructions
-		int opcode=line[0];
-		int operand1=line[1];
-		int operand2=line[2];	
-	}
-	
-	// Initialize the CPU
-    initCPU();
+#include "state.h"
+#include "memory.h"
 
-    // TODO: load program into memory
+static inline void ltrim(std::string &s) {
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
+        return !std::isspace(ch);
+    }));
+}
 
-    // Fetch and execute instructions until HALT
-    while (true) {
-        // Fetch next instruction
-        Instructions instruction = fetch();
+static inline void rtrim(std::string &s) {
+    s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
+        return !std::isspace(ch);
+    }).base(), s.end());
+}
 
-        // Execute instruction
-        execute(instruction);
+static inline void trim(std::string &s) {
+    rtrim(s);
+    ltrim(s);
+}
 
-        // Advance program counter
-        advancePC(instruction);
+void read_yo_file() {
 
-        // Break if HALT instruction was executed
-        if (instruction == HALT) {
-            break;
+    for (std::string line; std::getline(std::cin, line);) {
+        trim(line);
+        if (line.length() == 0) continue;
+        auto idx0 = line.find('|');
+        if ()
+        
+        if (bytecode.length() == 0) continue;
+        trim(address);
+        trim(bytecode);
+
+        for (int i = 0; i < bytecode.length(); i += 2) {
+            write_byte(std::stoi(address, 0, 16) + (i >> 1), std::stoi(bytecode.substr(i, i + 2)));
         }
     }
-
-    return 0;
-
-
-	
-	
-	
 }
 
 
+int main() {\
+    read_yo_file();
+    for (int i = 0; i < 100; i++) {
+        std::cout << MEM[i] << " ";
+    }
+}
