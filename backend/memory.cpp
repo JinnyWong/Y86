@@ -4,6 +4,9 @@
 #include <cstdlib>
 
 #include "memory.h"
+#include "json.hpp" 
+
+using json=nlohmann::json;
 
 uint8_t read_byte(uint64_t address)
 {
