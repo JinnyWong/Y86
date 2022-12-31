@@ -8,7 +8,7 @@ This project is a C++ powered, Y86 emulator with a minimalistic and modern UI.
 
 🔗[Website Link]()
 
-`![]()`
+![screenshot](https://github.com/JinnyWong/Y86/blob/main/assets/frontend.png)
 
 ## Features and Details
 
